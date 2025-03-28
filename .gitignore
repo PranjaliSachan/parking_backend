@@ -1,0 +1,121 @@
+# Python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django files
+db.sqlite3
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+venv/
+env/
+instance/
+tmp/
+media/
+staticfiles/
+static/
+*.sqlite3-journal
+celerybeat-schedule
+local_settings.py
+.env
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+*.env
+
+# VS Code settings
+.vscode/
+.settings/
+
+# IDEs and Editors
+.idea/
+*.swp
+*.swo
+*.swn
+*.sublime-project
+*.sublime-workspace
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs and Debugging Files
+logs/
+*.log
+nohup.out
+debug.log
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Node Modules (if using React for frontend)
+node_modules/
+npm-debug.log
+yarn.lock
+package-lock.json
+
+# Docker
+docker-compose.override.yml
+*.dockerfile
+*.dockerignore
+
+# AWS / Cloud / Deployment
+*.pem
+*.crt
+*.key
+*.pem
+
+# Database
+*.sqlite3
+*.db
+*.sqlite3-journal
+
+# Migrations (optional, if auto-generated)
+**/migrations/*.pyc
+**/migrations/*.pyo
+**/migrations/*.py
+
+# Pytest / Test Cache
+.pytest_cache/
+.tox/
+nosetests.xml
+coverage.xml
+htmlcov/
+.coverage
+
+# Black & Formatting
+black/
+isort/
+
+# Gunicorn logs
+gunicorn.error.log
+gunicorn.access.log
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Protobuf compiled files
+*.pb.go
+*.pb.cc
+*.pb.h
+*.pb.c
+*.pb.o
+*.pb.swift
+*.pb.py
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+.DS_Store
