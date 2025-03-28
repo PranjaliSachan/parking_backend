@@ -32,9 +32,9 @@ df = pd.read_csv(csv_file_path)
 # Insert data into the ParkingSpot table
 for _, row in df.iterrows():
     cursor.execute("""
-        INSERT INTO reservations_parkingspot (location, latitude, longitude, price_per_hour, is_available)
-        VALUES (%s, %s, %s, %s, %s)
-    """, (row['Location'], row['Latitude'], row['Longitude'], row['Price_per_Hour'], row['Availability'] == 'Available'))
+        INSERT INTO reservations_parkingspot (id, location, latitude, longitude, price_per_hour, is_available)
+        VALUES (%s, %s, %s, %s, %s, %s)
+    """, (row['id'], row['location'], row['latitude'], row['longitude'], row['price_per_hour'], row['is_available'] == 1))
 
 # Commit and close connection
 conn.commit()
