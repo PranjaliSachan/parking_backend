@@ -62,7 +62,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React frontend
+    "https://squirrel-hill-parking.netlify.app",  # React frontend
 ]
 
 ROOT_URLCONF = 'parking_backend.urls'
