@@ -29,7 +29,7 @@ class CreateReservation(generics.CreateAPIView):
                 return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
 
             # Ensure the user exists
-            user = User.objects.get(id=user_id)
+            # user = User.objects.get(id=user_id)
 
             # Get the parking spot
             spot = ParkingSpot.objects.get(id=spot_id)
@@ -52,7 +52,7 @@ class CreateReservation(generics.CreateAPIView):
 
             # Create the reservation
             reservation = Reservation.objects.create(
-                user=user,
+                user=user_id,
                 parking_spot=spot,
                 start_time=start_time,
                 end_time=end_time,
