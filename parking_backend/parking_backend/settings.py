@@ -33,6 +33,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['parking-backend-t2sv.onrender.com']
 
+# Bind Django to the correct port
+PORT = os.getenv("PORT", "8000")  # Default to 8000 if PORT is not set
 
 # Application definition
 
