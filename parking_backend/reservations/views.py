@@ -30,7 +30,7 @@ class CreateReservation(generics.CreateAPIView):
                 return Response({"error": "Missing required fields"}, status=status.HTTP_400_BAD_REQUEST)
 
             # Ensure the user exists
-            # user = User.objects.get(id=user_id)
+            user = User.objects.get(id=user_id)
 
             # Get the parking spot
             spot = ParkingSpot.objects.get(id=spot_id)
@@ -49,7 +49,7 @@ class CreateReservation(generics.CreateAPIView):
 
             # Create the reservation
             reservation = Reservation.objects.create(
-                user=user_id,
+                user=user,
                 parking_spot=spot,
                 start_time=start_time,
                 end_time=end_time,
@@ -68,7 +68,8 @@ class CreateReservation(generics.CreateAPIView):
             return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
         except ParkingSpot.DoesNotExist:
             return Response({"error": "Spot not found"}, status=status.HTTP_404_NOT_FOUND)
-        except ValueError:
+        except ValueError as error:
+            print("ValueError:", error)
             return Response({"error": "Invalid datetime format"}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
