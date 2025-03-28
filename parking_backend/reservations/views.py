@@ -4,6 +4,7 @@ from .models import ParkingSpot, Reservation
 from .serializers import ParkingSpotSerializer, ReservationSerializer
 from django.contrib.auth.models import User
 from datetime import datetime
+from dateutil import parser
 from django.utils.timezone import make_aware
 
 
@@ -36,18 +37,14 @@ class CreateReservation(generics.CreateAPIView):
             if not spot.is_available:
                 return Response({"error": "Spot already reserved"}, status=status.HTTP_400_BAD_REQUEST)
 
-            # Convert ISO string to datetime
-            start_time = datetime.fromisoformat(start_time)
-            end_time = datetime.fromisoformat(end_time)
+            # Convert ISO 8601 string to datetime
+            start_time = parser.isoparse(start_time)
+            end_time = parser.isoparse(end_time)
 
-            # Check if datetime is naive (i.e., lacks timezone info)
-            def is_naive(dt):
-                return dt.tzinfo is None or dt.tzinfo.utcoffset(dt) is None
-
-            # Apply `make_aware` only if datetime is naive
-            if is_naive(start_time):
+            # Ensure datetime is timezone-aware
+            if start_time.tzinfo is None:
                 start_time = make_aware(start_time)
-            if is_naive(end_time):
+            if end_time.tzinfo is None:
                 end_time = make_aware(end_time)
 
             # Create the reservation
